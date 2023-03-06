@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
-const loginRoute: Router = Router()
+const loginRoutes: Router = Router()
 
-loginRoute.post('')
+loginRoutes.post('')
 
-export default loginRoute
+export default loginRoutes
