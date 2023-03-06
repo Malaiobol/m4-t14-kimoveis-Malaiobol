@@ -13,7 +13,7 @@ class User{
     @PrimaryGeneratedColumn('increment')
     id: number
 
-    @Column({length: 45})
+    @Column({ length: 45 })
     name: string
 
     @Column({ length: 45, unique: true })
