@@ -4,9 +4,9 @@ import { User } from '../../entities';
 import { returnUsersSchema } from '../../schemas/users.schemas';
 
 const getAllUsersService = async () =>{
-    const UsersRepository: Repository<User> = AppDataSource.getRepository(User)  
+    const usersRepository: Repository<User> = AppDataSource.getRepository(User)  
     
-    const users = await UsersRepository.find()
+    const users = await usersRepository.find()
 
     const actualUsers = returnUsersSchema.parse(users)
 
