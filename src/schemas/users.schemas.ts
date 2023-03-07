@@ -13,6 +13,7 @@ const userUpdateSchema = userSchema.partial()
 
 const returnUserSchema = userSchema.extend({
     id: z.number(),
+    admin: z.boolean().default(false),
     createdAt: z.date(),
     updatedAt: z.date(),
     deletedAt: z.date().nullable()
