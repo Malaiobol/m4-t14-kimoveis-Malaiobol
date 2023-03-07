@@ -19,7 +19,7 @@ const updateUserService = async (UserData: IUserUpdate, UserId: number): Promise
 
     await UsersRepository.save(newUser)
 
-    const updatedUser = returnUserSchema.parse(User)
+    const updatedUser = returnUserSchema.parse(newUser)
 
     return updatedUser
 }

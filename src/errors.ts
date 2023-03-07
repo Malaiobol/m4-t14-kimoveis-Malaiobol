@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express"
-import { ZodError } from "zod"
+import { NextFunction, Request, Response } from 'express'
+import { ZodError } from 'zod'
 
 class AppError extends Error {
     statusCode: number
@@ -11,6 +11,7 @@ class AppError extends Error {
 }
 
 const handleErrors = (err:any, req: Request, resp: Response, _: NextFunction) => {
+    
     if(err instanceof AppError){
         return resp.status(err.statusCode).json({
             message: err.message
