@@ -22,7 +22,7 @@ class User{
     @Column({ length: 120 })
     password: string
 
-    @Column()
+    @Column({ default: false })
     admin: boolean
 
     @CreateDateColumn()
