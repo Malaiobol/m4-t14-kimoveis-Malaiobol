@@ -14,7 +14,7 @@ const userUpdateSchema = userSchema.partial()
 const returnUserSchema = userSchema.extend({
     id: z.number(),
     createdAt: z.date(),
-    updateAt: z.date(),
+    updatedAt: z.date(),
     deletedAt: z.date().nullable()
 }).omit({ password:true })
 
