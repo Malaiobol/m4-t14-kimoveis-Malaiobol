@@ -22,16 +22,16 @@ class User{
     @Column({ length: 120 })
     password: string
 
-    @Column({ default: false })
+    @Column({ default: false, nullable: true })
     admin: boolean
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type:"date" })
     createdAt: Date
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type:"date" })
     updatedAt: Date
 
-    @DeleteDateColumn()
+    @DeleteDateColumn({ type:"date" })
     deletedAt: Date
 }   
 
