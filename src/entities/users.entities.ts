@@ -31,7 +31,7 @@ class User{
     @UpdateDateColumn()
     updatedAt: Date
 
-    @DeleteDateColumn({ nullable: true })
+    @DeleteDateColumn()
     deletedAt: Date
 }   
 
