@@ -1,13 +1,13 @@
 import { 
     createCategorySchema,
-    categoryResultSchema,
-    categoriesArraySchema,
+    returnCategoriesSchema,
+    returnCategorySchema,
 } from '../schemas/categories.schemas'
 import { z } from 'zod'
 
 type ICategory = z.infer<typeof createCategorySchema>
-type ICategoryReturn = z.infer<typeof categoryResultSchema> 
-type ICategoriesReturn = z.infer<typeof categoriesArraySchema>
+type ICategoryReturn = z.infer<typeof returnCategorySchema> 
+type ICategoriesReturn = z.infer<typeof returnCategoriesSchema>
 
 export {
     ICategory,

@@ -4,14 +4,14 @@ const createCategorySchema = z.object({
     name: z.string().min(5).max(45)
 })
 
-const categoryResultSchema = createCategorySchema.extend({
+const returnCategorySchema = createCategorySchema.extend({
     id: z.number()
 })
 
-const categoriesArraySchema = categoryResultSchema.array()
+const returnCategoriesSchema = returnCategorySchema.array()
 
 export {
     createCategorySchema,
-    categoryResultSchema,
-    categoriesArraySchema,
+    returnCategorySchema,
+    returnCategoriesSchema,
 }
