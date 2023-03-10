@@ -34,8 +34,9 @@ const loginService = async (loginData: ILogin): Promise<string> =>{
         {
             expiresIn: process.env.EXPIRES_IN!,
             subject: String(user.id)
-        }
-    )
+        }   
+    )      
+    
     return token
 }
 

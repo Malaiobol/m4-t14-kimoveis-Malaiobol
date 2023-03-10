@@ -7,12 +7,14 @@ import {
 import ensureEmailIsValidMiddleware from '../middlewares/ensureEmailIsUnique.middleware'
 import ensureDataIsValidMiddleware from '../middlewares/validateData.middleware'
 import ensureUserExistsMiddleware from '../middlewares/ensureUserExists.middleware'
+import ensureIsActualDevMiddleware from '../middlewares/ensureIsActualDev.middleware'
+import ensureDevIsAdminMiddleware from '../middlewares/ensureDevIsAdmin.middleware'
 
 const userRoutes: Router = Router()
 
 userRoutes.post('', ensureDataIsValidMiddleware(userSchema), ensureEmailIsValidMiddleware, createUserController)
-userRoutes.get('', getAllUsersController)
-userRoutes.patch('/:id', ensureUserExistsMiddleware, ensureDataIsValidMiddleware(userUpdateSchema), ensureEmailIsValidMiddleware, updateUserController)
+userRoutes.get('', ensureDevIsAdminMiddleware, getAllUsersController)
+userRoutes.patch('/:id', ensureUserExistsMiddleware, ensureIsActualDevMiddleware, ensureDataIsValidMiddleware(userUpdateSchema), ensureEmailIsValidMiddleware, updateUserController)
 userRoutes.delete('/:id', ensureUserExistsMiddleware, softDeleteUserController)
 
 export default userRoutes

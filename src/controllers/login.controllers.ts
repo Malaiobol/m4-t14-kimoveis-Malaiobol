@@ -8,6 +8,7 @@ const loginController = async (req: Request, res: Response): Promise<Response> =
 
     const token = await loginService(loginData)
 
+    console.log(req.user, "chegou")
     return res.json({
         token: token
     })
