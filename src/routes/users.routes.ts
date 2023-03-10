@@ -5,7 +5,7 @@ import {
     userUpdateSchema 
 } from '../schemas/users.schemas'
 import ensureEmailIsValidMiddleware from '../middlewares/ensureEmailIsUnique.middleware'
-import ensureDataIsValidMiddleware from '../middlewares/validateUserData.middleware'
+import ensureDataIsValidMiddleware from '../middlewares/validateData.middleware'
 import ensureUserExistsMiddleware from '../middlewares/ensureUserExists.middleware'
 
 const userRoutes: Router = Router()
