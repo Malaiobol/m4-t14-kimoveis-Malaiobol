@@ -38,3 +38,5 @@ const loginService = async (loginData: ILogin): Promise<string> =>{
     )
     return token
 }
+
+export default loginService
