@@ -1,9 +1,14 @@
 import { Router } from 'express'
-import { createUserController, getAllUsersController, softDeleteUserController, updateUserController } from '../controllers/users.controllers'
 import { 
     userSchema,
     userUpdateSchema 
 } from '../schemas/users.schemas'
+import { 
+    createUserController, 
+    getAllUsersController, 
+    softDeleteUserController, 
+    updateUserController 
+} from '../controllers/users.controllers'
 import ensureEmailIsValidMiddleware from '../middlewares/ensureEmailIsUnique.middleware'
 import ensureDataIsValidMiddleware from '../middlewares/validateData.middleware'
 import ensureUserExistsMiddleware from '../middlewares/ensureUserExists.middleware'
