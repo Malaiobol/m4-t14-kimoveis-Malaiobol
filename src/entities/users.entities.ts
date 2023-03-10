@@ -26,10 +26,10 @@ class User{
     admin: boolean
 
     @CreateDateColumn({ type:"date" })
-    createdAt: Date
+    createdAt?: string | undefined | null | Date
 
     @UpdateDateColumn({ type:"date" })
-    updatedAt: Date
+    updatedAt?: string | undefined | null | Date
 
     @DeleteDateColumn({ type:"date" })
     deletedAt: Date

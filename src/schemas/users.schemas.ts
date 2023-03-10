@@ -14,9 +14,21 @@ const userUpdateSchema = userSchema.partial()
 const returnUserSchema = userSchema.extend({
     id: z.number(),
     admin: z.boolean().default(false),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-    deletedAt: z.date().nullable()
+    createdAt: z.preprocess((date) => {
+        if(typeof date == 'string' || date instanceof Date){
+            return new Date(date)
+        }
+    }, z.date().or(z.string()) ).optional().nullable(),
+    updatedAt: z.preprocess((date) => {
+        if(typeof date == 'string' || date instanceof Date){
+            return new Date(date)
+        }
+    }, z.date().or(z.string()) ).optional().nullable(),
+    deletedAt: z.preprocess((date) => {
+        if(typeof date == 'string' || date instanceof Date){
+            return new Date(date)
+        }
+    }, z.date().or(z.string()) ).optional().nullable(),
 }).omit({ password:true })
 
 const returnUsersSchema = returnUserSchema.array()
