@@ -1,5 +1,5 @@
-import { User } from './users.entities'
-import { Category } from './categories.entities'
+import { User } from './users.entity'
+import { Category } from './categories.entity'
 
 export { 
     User,
