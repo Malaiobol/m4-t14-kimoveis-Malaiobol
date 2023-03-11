@@ -4,8 +4,9 @@ import {
     PrimaryGeneratedColumn,
     JoinColumn,
     OneToOne,
-    OneToMany,
-    ManyToOne
+    ManyToOne,
+    UpdateDateColumn,
+    CreateDateColumn
 } from 'typeorm'
 import { Address } from './addresses.entity'
 import { Category } from './categories.entity'
@@ -25,10 +26,10 @@ class RealEstate {
     @Column()
     size: number
 
-    @Column({ type:'date' })
+    @CreateDateColumn({ type:'date' })
     createdAt: Date
 
-    @Column({ type: 'date' })
+    @UpdateDateColumn({ type: 'date' })
     updatedAt: Date
 
     @OneToOne(()=> Address)
