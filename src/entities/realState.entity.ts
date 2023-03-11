@@ -33,7 +33,7 @@ class RealEstate {
 
     @OneToOne(()=> Address)
     @JoinColumn()
-    adress: Address
+    address: Address
 
     @ManyToOne(()=> Category)
     category: Category
