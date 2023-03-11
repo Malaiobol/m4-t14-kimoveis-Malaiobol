@@ -16,8 +16,8 @@ class RealEstate {
     @PrimaryGeneratedColumn('increment')
     id: number
 
-    @Column({ default: false, nullable: true })
-    sold?: boolean | null | undefined
+    @Column({ default: false })
+    sold: boolean 
 
     @Column({ type: 'decimal', precision: 12, scale: 2 })
     value: number
