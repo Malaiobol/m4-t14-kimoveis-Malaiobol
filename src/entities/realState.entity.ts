@@ -4,7 +4,8 @@ import {
     PrimaryGeneratedColumn,
     JoinColumn,
     OneToOne,
-    OneToMany
+    OneToMany,
+    ManyToOne
 } from 'typeorm'
 import { Address } from './addresses.entity'
 import { Category } from './categories.entity'
@@ -34,7 +35,8 @@ class RealEstate {
     @JoinColumn()
     adress: Address
 
-
+    @ManyToOne(()=> Category)
+    category: Category
 }
 
 export {
