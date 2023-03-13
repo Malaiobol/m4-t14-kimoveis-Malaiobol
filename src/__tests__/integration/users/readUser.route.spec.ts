@@ -32,6 +32,7 @@ describe('GET /users', () => {
       .set('Authorization', `Bearer ${tokenMock.genToken(true, 1)}`)
       .send();
 
+      console.log(response)
     const expectResults = {
       status: 200,
       expectBody: readUsers,

@@ -18,7 +18,7 @@ const getAllUsersController = async ( req: Request, res: Response ) => {
 
     const allUsers = await getAllUsersService()
 
-    return res.status(201).json(allUsers)
+    return res.status(200).json(allUsers)
 }
 
 const updateUserController = async ( req: Request, res: Response ) => { 
@@ -32,7 +32,9 @@ const updateUserController = async ( req: Request, res: Response ) => {
 }
 
 const softDeleteUserController = async ( req: Request, res: Response ) => {
+    
     const idUser: number = parseInt(req.params.id)
+    
     await softDeleteUserService(idUser)
 
     return res.status(204).send()

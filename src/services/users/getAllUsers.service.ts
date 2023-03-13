@@ -6,9 +6,7 @@ import { returnUsersSchema } from '../../schemas/users.schemas';
 const getAllUsersService = async () =>{
     const usersRepository: Repository<User> = AppDataSource.getRepository(User)  
     
-    const users = await usersRepository.find({
-        withDeleted: true
-    })
+    const users: Array<User> = await usersRepository.find()
 
     const actualUsers = returnUsersSchema.parse(users)
 

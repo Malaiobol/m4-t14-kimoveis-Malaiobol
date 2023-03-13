@@ -36,6 +36,8 @@ describe('POST /users', () => {
       status: 201,
     };
 
+    console.log(response.body)
+    console.log(expect.objectContaining(bodyEqual))
     expect(response.status).toBe(expectResults.status);
     expect(response.body).toEqual(expect.objectContaining(bodyEqual));
     expect(response.body).not.toEqual(

@@ -8,7 +8,7 @@ export const ensureIsActualDevMiddleware = async (req: Request, resp: Response, 
     const actualUserId = +req.user.id
 
     if(actualReq !== actualUserId && actualUser.admin === false){
-        throw new AppError('Insufficient Permission', 403)
+        throw new AppError('Insufficient permission', 403)
     }
 
     return next()
