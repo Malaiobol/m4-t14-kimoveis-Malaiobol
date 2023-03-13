@@ -1,7 +1,6 @@
 import {
     readScheduleSchema,
-    createScheduleSchema,
-    createResponseScheduleSchema
+    createScheduleSchema
 } from '../schemas/schedules.schemas'
 import { z } from 'zod'
 

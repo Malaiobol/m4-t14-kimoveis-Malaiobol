@@ -1,43 +1,46 @@
-import {  z } from 'zod'
-import { returnCategorySchema } from './categories.schemas'
+import { z} from 'zod'
+import { 
+    returnCategorySchema
+} from './categories.schemas'
 
 const addressSchema = z.object({
-    street: z.string().min(5).max(45),
-    zipCode: z.string().min(8).max(8),
-    number: z.string().max(5).nullish(),
-    city: z.string().max(20),
-    state: z.string().max(2)
+	street: z.string(),
+	zipCode: z.string().max(8),
+	number: z.string().max(7).nullish(),
+	city: z.string(),
+	state: z.string().max(2)
 })
 
-const addressResult = addressSchema.extend({
-    id: z.number()
-}).omit({id: true})
-   
-const realEstateSchema = z.object({
-    sold: z.boolean().default(false),
-    value: z.number(),
-    size: z.number().positive(),
-    address: addressSchema,
-    categoryId: z.number()
+const returnAddressSchema = z.object({
+	id: z.number(),
+	street: z.string(),
+	zipCode: z.string().max(8),
+	number: z.string().max(7).nullish(),
+	city: z.string(),
+	state: z.string().max(2)
 })
 
-const realEstateSchemaResult = realEstateSchema.extend({
-    id: z.number(),
-    createdAt: z.string(),
-    updatedAt: z.string(),
-    sold: z.boolean().default(false),
-    address: addressResult,
-    category: returnCategorySchema
-}).omit({
-    categoryId: true
+const realEstateReq = z.object({
+	value: z.number().gt(0).or(z.string()),
+	size: z.number().gt(0),
+	address: addressSchema,
+	categoryId: z.number(),
 })
 
-const realEstatesSchema = realEstateSchemaResult.omit({category: true}).array()
+const realEstateResponseSchema = z.object({
+	id: z.number(),
+	value: z.number().gt(0).or(z.string()),
+	size: z.number().gt(0),
+	sold: z.boolean().default(false),
+	address: returnAddressSchema,
+	category: returnCategorySchema,
+	createdAt: z.string(),
+	updatedAt: z.string()
+})
 
 export {
-    addressResult,
+	realEstateReq,
+	realEstateResponseSchema,
+	returnAddressSchema,
     addressSchema,
-    realEstateSchema,
-    realEstateSchemaResult,
-    realEstatesSchema
 }
