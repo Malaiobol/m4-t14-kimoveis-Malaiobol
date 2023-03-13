@@ -11,36 +11,34 @@ const addressSchema = z.object({
 	state: z.string().max(2)
 })
 
-const returnAddressSchema = z.object({
+const addressResult = addressSchema.extend({
 	id: z.number(),
-	street: z.string(),
-	zipCode: z.string().max(8),
-	number: z.string().max(7).nullish(),
-	city: z.string(),
-	state: z.string().max(2)
 })
 
-const realEstateReq = z.object({
-	value: z.number().gt(0).or(z.string()),
+const realEstateSchema = z.object({
+	value: z.number().gt(0),
 	size: z.number().gt(0),
 	address: addressSchema,
 	categoryId: z.number(),
 })
 
-const realEstateResponseSchema = z.object({
+const realEstateSchemaResult = z.object({
 	id: z.number(),
-	value: z.number().gt(0).or(z.string()),
+	value: z.number().gt(0),
 	size: z.number().gt(0),
 	sold: z.boolean().default(false),
-	address: returnAddressSchema,
+	address: addressResult,
 	category: returnCategorySchema,
 	createdAt: z.string(),
 	updatedAt: z.string()
 })
 
+const realEstatesSchema = realEstateSchemaResult.array()
+
 export {
-	realEstateReq,
-	realEstateResponseSchema,
-	returnAddressSchema,
+	realEstateSchema,
+	realEstateSchemaResult,
+	addressResult,
     addressSchema,
+	realEstatesSchema
 }
