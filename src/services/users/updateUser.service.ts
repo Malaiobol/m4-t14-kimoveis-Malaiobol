@@ -8,7 +8,7 @@ const updateUserService = async (UserData: IUserUpdate, UserId: number): Promise
 
     const UsersRepository: Repository<User> = AppDataSource.getRepository(User)  
 
-    const oldUserData = await UsersRepository.findOneBy({
+    const oldUserData: User | null = await UsersRepository.findOneBy({
         id: UserId
     })
 

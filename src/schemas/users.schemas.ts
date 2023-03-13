@@ -6,29 +6,18 @@ const userSchema = z.object({
     email: z.string().email().max(45),
     password: z.string().max(45).transform((pass)=>{
         return hashSync(pass, 10)
-    })
+    }),
+    admin: z.boolean().default(false),
 })
 
-const userUpdateSchema = userSchema.partial()
+const userUpdateSchema = userSchema.partial().omit({ admin: true })
+const userWithoutPassword = userSchema.omit({ password: true })
 
 const returnUserSchema = userSchema.extend({
     id: z.number(),
-    admin: z.boolean().default(false),
-    createdAt: z.preprocess((date) => {
-        if(typeof date == 'string' || date instanceof Date){
-            return new Date(date)
-        }
-    }, z.date().or(z.string()) ).optional().nullable(),
-    updatedAt: z.preprocess((date) => {
-        if(typeof date == 'string' || date instanceof Date){
-            return new Date(date)
-        }
-    }, z.date().or(z.string()) ).optional().nullable(),
-    deletedAt: z.preprocess((date) => {
-        if(typeof date == 'string' || date instanceof Date){
-            return new Date(date)
-        }
-    }, z.date().or(z.string()) ).optional().nullable(),
+    createdAt: z.string(),
+	updatedAt: z.string(),
+	deletedAt: z.string().nullable(),
 }).omit({ password:true })
 
 const returnUsersSchema = returnUserSchema.array()
@@ -37,5 +26,6 @@ export {
     userSchema,
     returnUserSchema,
     userUpdateSchema,
-    returnUsersSchema
+    returnUsersSchema,
+    userWithoutPassword
 }

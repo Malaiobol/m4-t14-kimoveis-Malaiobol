@@ -11,7 +11,7 @@ const ensureNameIsUnique = async ( req: Request, resp: Response, next: NextFunct
         const findCategoryName = await categoryRepository.findOneBy({
             name: req.body.name
         })
-        if(findCategoryName) throw new AppError('Category already exists.', 409)
+        if(findCategoryName) throw new AppError('Category already exists', 409)
     }
     
     return next()

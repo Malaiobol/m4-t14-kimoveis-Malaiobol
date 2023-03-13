@@ -31,13 +31,13 @@ class User{
     admin: boolean
 
     @CreateDateColumn({ type:"date" })
-    createdAt?: string | undefined | null | Date
+    createdAt: string 
 
     @UpdateDateColumn({ type:"date" })
-    updatedAt?: string | undefined | null | Date
+    updatedAt: string 
 
     @DeleteDateColumn({ type:"date" })
-    deletedAt: Date
+    deletedAt: string
 
     @OneToMany(() => Schedule, schedule => schedule.user)
     schedule: Schedule[];

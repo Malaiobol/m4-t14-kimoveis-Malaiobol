@@ -16,7 +16,7 @@ const addressResult = addressSchema.extend({
 })
 
 const realEstateSchema = z.object({
-	value: z.number().gt(0),
+	value: z.number().gt(0).or(z.string()),
 	size: z.number().gt(0),
 	address: addressSchema,
 	categoryId: z.number(),
@@ -24,7 +24,7 @@ const realEstateSchema = z.object({
 
 const realEstateSchemaResult = z.object({
 	id: z.number(),
-	value: z.number().gt(0),
+	value: z.number().gt(0).or(z.string()),
 	size: z.number().gt(0),
 	sold: z.boolean().default(false),
 	address: addressResult,

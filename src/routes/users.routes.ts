@@ -20,7 +20,7 @@ const userRoutes: Router = Router()
 
 userRoutes.post('', ensureDataIsValidMiddleware(userSchema), ensureEmailIsValidMiddleware, createUserController)
 userRoutes.get('', ensureTokenIsValidMiddleware, ensureDevIsAdminMiddleware, getAllUsersController)
-userRoutes.patch('/:id', ensureTokenIsValidMiddleware, ensureIsActualDevMiddleware, ensureUserExistsMiddleware, ensureDataIsValidMiddleware(userUpdateSchema), ensureEmailIsValidMiddleware, updateUserController)
-userRoutes.delete('/:id', ensureTokenIsValidMiddleware,  ensureIsActualDevMiddleware, ensureUserExistsMiddleware, softDeleteUserController)
+userRoutes.patch('/:id', ensureUserExistsMiddleware, ensureTokenIsValidMiddleware, ensureIsActualDevMiddleware, ensureDataIsValidMiddleware(userUpdateSchema), ensureEmailIsValidMiddleware, updateUserController)
+userRoutes.delete('/:id', ensureUserExistsMiddleware, ensureTokenIsValidMiddleware,  ensureIsActualDevMiddleware, softDeleteUserController)
 
 export default userRoutes

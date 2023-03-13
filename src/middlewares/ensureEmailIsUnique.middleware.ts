@@ -11,7 +11,7 @@ const ensureEmailIsValidMiddleware = async (req: Request, resp: Response, next:N
         const findUserEmail = await UserRepository.findOneBy({
             email: req.body.email
         })
-        if(findUserEmail) throw new AppError('Email already exists.', 409)
+        if(findUserEmail) throw new AppError('Email already exists', 409)
     }
     
     return next()

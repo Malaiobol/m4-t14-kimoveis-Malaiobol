@@ -5,7 +5,7 @@ const ensureDevIsAdminMiddleware = async (req: Request, resp: Response, next: Ne
     const actualUser = req.user 
 
     if(actualUser.admin === false){
-        throw new AppError('Insufficient Permission', 403)
+        throw new AppError('Insufficient permission', 403)
     }
 
     return next()
