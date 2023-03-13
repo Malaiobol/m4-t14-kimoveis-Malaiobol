@@ -1,7 +1,8 @@
 import { Router } from 'express'
 import { 
     createCategoryController, 
-    getAllCategoriesController 
+    getAllCategoriesController, 
+    readCategoryWithRealEstateController
 } from '../controllers/categories.controllers'
 import ensureDevIsAdminMiddleware from '../middlewares/ensureDevIsAdmin.middleware'
 import ensureTokenIsValidMiddleware from '../middlewares/ensureTokenIsValid.middleware'
@@ -11,6 +12,6 @@ const categoriesRoutes: Router = Router()
 
 categoriesRoutes.post('', ensureTokenIsValidMiddleware, ensureDevIsAdminMiddleware, ensureNameIsUnique, createCategoryController)
 categoriesRoutes.get('', getAllCategoriesController)
-categoriesRoutes.get('/:id/realEstate')
+categoriesRoutes.get('/:id/realEstate', readCategoryWithRealEstateController)
 
 export default categoriesRoutes
